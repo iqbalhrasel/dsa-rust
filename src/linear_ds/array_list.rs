@@ -32,4 +32,18 @@ impl ArrayList {
         self.nums[self.count] = item;
         self.count += 1;
     }
+
+    pub fn remove_at(&mut self, index: usize) {
+        if index >= self.count {
+            panic!("illegal argument");
+        }
+        for i in index..self.count - 1 {
+            self.nums[i] = self.nums[i + 1];
+        }
+        self.count -= 1;
+    }
+
+    pub fn to_string(&self) -> String {
+        return format!("{:?}", &self.nums[..self.count]);
+    }
 }

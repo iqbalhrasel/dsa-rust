@@ -7,10 +7,10 @@ fn main() {
     list.insert(10);
     list.insert(20);
     list.insert(30);
-    list.insert(40);
-    list.insert(50);
-    list.insert(60);
-    list.insert(70);
+    // list.insert(40);
+    // list.insert(50);
 
-    println!("{:?}", list)
+    list.remove_at(2);
+
+    println!("{:?}", list.to_string())
 }
