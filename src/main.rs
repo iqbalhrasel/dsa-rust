@@ -1,16 +1,14 @@
-use crate::linear_ds::array_list::ArrayList;
+use crate::linear_ds::{array_list::ArrayList, linked_list::LinkedList};
 
 mod linear_ds;
 
 fn main() {
-    let mut list = ArrayList::new(3);
-    list.insert(10);
-    list.insert(20);
-    list.insert(30);
-    list.insert(40);
-    list.insert(50);
+    let mut list = LinkedList::new();
+    list.add_last(10);
+    list.add_last(20);
+    list.add_last(30);
+    list.add_last(40);
+    list.add_last(50);
 
-    println!("{:?}", list.index_of(40));
-
-    println!("{:?}", list.to_string());
+    println!("{:?}", list);
 }
