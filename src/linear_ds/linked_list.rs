@@ -40,4 +40,21 @@ impl LinkedList {
 
         self.count += 1;
     }
+
+    pub fn add_first(&mut self, item: i32) {
+        let node = Rc::new(RefCell::new(Node {
+            value: item,
+            next_node: None,
+        }));
+
+        if self.head.is_none() {
+            self.head = Some(Rc::clone(&node));
+            self.tail = Some(Rc::clone(&node));
+        } else {
+            node.borrow_mut().next_node = self.head.clone();
+            self.head = Some(Rc::clone(&node));
+        }
+
+        self.count += 1;
+    }
 }

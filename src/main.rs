@@ -6,9 +6,7 @@ fn main() {
     let mut list = LinkedList::new();
     list.add_last(10);
     list.add_last(20);
-    list.add_last(30);
-    list.add_last(40);
-    list.add_last(50);
+    list.add_first(5);
 
     println!("{:?}", list);
 }
