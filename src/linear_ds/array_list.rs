@@ -39,8 +39,19 @@ impl ArrayList {
         }
         for i in index..self.count - 1 {
             self.nums[i] = self.nums[i + 1];
+            self.nums[i + 1] = 0;
         }
         self.count -= 1;
+    }
+
+    pub fn index_of(&self, item: i32) -> Option<usize> {
+        for i in 0..self.count {
+            if self.nums[i] == item {
+                return Some(i);
+            }
+        }
+
+        return None;
     }
 
     pub fn to_string(&self) -> String {
