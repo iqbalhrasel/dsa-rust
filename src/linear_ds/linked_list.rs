@@ -57,4 +57,22 @@ impl LinkedList {
 
         self.count += 1;
     }
+
+    pub fn index_of(&self, item: i32) -> Option<usize> {
+        let mut current = self.head.clone();
+        let mut index = 0;
+
+        while let Some(node_rc) = current {
+            let node = node_rc.borrow();
+
+            if node.value == item {
+                return Some(index);
+            }
+
+            current = node.next_node.clone();
+            index += 1;
+        }
+
+        return None;
+    }
 }
