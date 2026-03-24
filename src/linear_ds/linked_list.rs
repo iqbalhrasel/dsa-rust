@@ -79,4 +79,22 @@ impl LinkedList {
     pub fn contains(&self, item: i32) -> bool {
         return self.index_of(item) != None;
     }
+
+    pub fn remove_first(&mut self) -> Result<(), String> {
+        match self.head.take() {
+            Some(node_rc) => {
+                let mut node = node_rc.borrow_mut();
+                let temp = node.next_node.take();
+                self.head = temp;
+
+                if self.head.is_none() {
+                    self.tail = None;
+                }
+
+                self.count -= 1;
+                return Ok(());
+            }
+            None => return Err("list is empty".to_string()),
+        };
+    }
 }
