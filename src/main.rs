@@ -8,5 +8,5 @@ fn main() {
     list.add_last(20);
     list.add_first(5);
 
-    println!("{:?}", list.index_of(50));
+    println!("{}", list.contains(5));
 }

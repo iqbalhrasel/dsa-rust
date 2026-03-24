@@ -75,4 +75,8 @@ impl LinkedList {
 
         return None;
     }
+
+    pub fn contains(&self, item: i32) -> bool {
+        return self.index_of(item) != None;
+    }
 }
