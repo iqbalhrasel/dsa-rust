@@ -11,10 +11,7 @@ fn main() {
     list.add_first(5);
 
     list.remove_first();
-    list.remove_first();
-    list.remove_first();
-    list.remove_first();
-    list.remove_first();
+    list.remove_last();
 
     println!("{:?}", list);
 }

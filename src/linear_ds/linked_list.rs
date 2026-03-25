@@ -97,4 +97,35 @@ impl LinkedList {
             None => return Err("list is empty".to_string()),
         };
     }
+
+    pub fn remove_last(&mut self) -> Result<(), String> {
+        if self.head.is_none() {
+            return Err("list is empty".to_string());
+        }
+
+        if self.head.as_ref().unwrap().borrow().next_node.is_none() {
+            self.head = None;
+            self.tail = None;
+            self.count -= 1;
+            return Ok(());
+        }
+
+        let mut current = self.head.clone();
+
+        while let Some(node_rc) = current.clone() {
+            let next = node_rc.borrow_mut().next_node.clone();
+
+            if let Some(next_node) = &next {
+                if next_node.borrow().next_node.is_none() {
+                    node_rc.borrow_mut().next_node = None;
+                    self.tail = Some(node_rc.clone());
+                    self.count -= 1;
+                    return Ok(());
+                }
+            }
+            current = next;
+        }
+
+        return Ok(());
+    }
 }
