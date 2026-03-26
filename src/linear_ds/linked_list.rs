@@ -128,4 +128,8 @@ impl LinkedList {
 
         return Ok(());
     }
+
+    pub fn size(&self) -> usize {
+        return self.count;
+    }
 }

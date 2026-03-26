@@ -13,5 +13,5 @@ fn main() {
     list.remove_first();
     list.remove_last();
 
-    println!("{:?}", list);
+    println!("{:?}", list.size());
 }
