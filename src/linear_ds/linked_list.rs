@@ -132,4 +132,16 @@ impl LinkedList {
     pub fn size(&self) -> usize {
         return self.count;
     }
+
+    pub fn to_array(&self) -> Box<[i32]> {
+        let mut current = self.head.clone();
+        let mut nums = Vec::with_capacity(self.count);
+
+        while let Some(n) = current {
+            nums.push(n.borrow().value);
+            current = n.borrow().next_node.clone();
+        }
+
+        return nums.into_boxed_slice();
+    }
 }
