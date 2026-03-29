@@ -146,7 +146,7 @@ impl LinkedList {
     }
 
     pub fn reverse(&mut self) {
-        if self.count == 0 {
+        if self.head.is_none() {
             return;
         }
 
@@ -168,5 +168,38 @@ impl LinkedList {
         if let Some(tail) = &self.tail {
             tail.borrow_mut().next_node = None;
         }
+    }
+
+    pub fn get_nth_from_end(&mut self, n: usize) -> Option<i32> {
+        if n > self.count || n == 0 {
+            return None;
+        }
+
+        let mut a = self.head.clone();
+        let mut b = self.head.clone();
+
+        let mut i = 0;
+        while let Some(node_rc) = b.clone() {
+            if i == n - 1 {
+                break;
+            }
+            b = node_rc.borrow().next_node.clone();
+            i += 1;
+        }
+
+        while let Some(node_rc) = b.clone() {
+            if node_rc.borrow().next_node.is_none() {
+                break;
+            }
+
+            a = a.as_ref().and_then(|nx| nx.borrow().next_node.clone());
+            b = node_rc.borrow().next_node.clone();
+        }
+
+        if let Some(node) = a.clone() {
+            return Some(node.borrow().value);
+        }
+
+        return None;
     }
 }

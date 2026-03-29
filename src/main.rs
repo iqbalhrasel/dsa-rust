@@ -10,7 +10,9 @@ fn main() {
     list.add_last(40);
     list.add_first(5);
 
-    list.reverse();
+    // list.reverse();
+    //
+    println!("{:?}", list.get_nth_from_end(25));
 
     println!("{:?}", list.to_array());
 }
