@@ -144,4 +144,29 @@ impl LinkedList {
 
         return nums.into_boxed_slice();
     }
+
+    pub fn reverse(&mut self) {
+        if self.count == 0 {
+            return;
+        }
+
+        let mut prev = self.head.clone();
+        let mut curr = prev.as_ref().and_then(|n| n.borrow().next_node.clone());
+
+        while let Some(n) = curr.clone() {
+            let temp = n.borrow().next_node.clone();
+
+            n.borrow_mut().next_node = prev.clone();
+
+            prev = curr;
+            curr = temp;
+        }
+
+        self.tail = self.head.clone();
+        self.head = prev;
+
+        if let Some(tail) = &self.tail {
+            tail.borrow_mut().next_node = None;
+        }
+    }
 }

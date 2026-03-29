@@ -10,8 +10,7 @@ fn main() {
     list.add_last(40);
     list.add_first(5);
 
-    list.remove_first();
-    list.remove_last();
+    list.reverse();
 
     println!("{:?}", list.to_array());
 }
